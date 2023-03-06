@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import Footer from './Footer';
 
 const Container = styled.div`
   display: flex;
@@ -65,6 +66,7 @@ function Weather({ city }) {
           <Description>{weather.description}</Description>
         </>
       )}
+      <Footer />
     </Container>
   );
 }
