@@ -1,24 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import Weather from './components/Weather';
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+`;
+
+const Title = styled.h1`
+  font-size: 48px;
+  margin-bottom: 24px;
+`;
+
+const Input = styled.input`
+  font-size: 24px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  margin-bottom: 24px;
+`;
 
 function App() {
+  const [city, setCity] = useState('');
+
+  function handleCityChange(event) {
+    setCity(event.target.value);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Title>Weather App</Title>
+      <Input
+        type="text"
+        placeholder="Enter a city name"
+        value={city}
+        onChange={handleCityChange}
+      />
+      {city && <Weather city={city} />}
+    </Container>
   );
 }
 
