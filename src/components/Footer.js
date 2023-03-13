@@ -3,19 +3,23 @@ import styled from 'styled-components';
 
 const Footer = () => {
   return (
-    <FooterStyle>
-      Made by <br />
-      <a href="https://github.com/MalicknND" target="_blank" rel="noreferrer">
-        Malick Siguy NDIAYE
-      </a>
-    </FooterStyle>
+    <Ftr>
+      Developed and Tested By <a href="https://github.com/MalicknND">Malick</a>
+    </Ftr>
   );
 };
 
-const FooterStyle = styled.p`
-  padding: 50px;
-  text-align: center;
+const Ftr = styled.footer`
+  font-family: 'Helvetica Neue';
+  font-weight: 400;
   font-size: 15px;
+  margin-top: 10px;
+  color: white;
+
+  a {
+    color: white;
+    font-size: 20px;
+  }
 `;
 
 export default Footer;

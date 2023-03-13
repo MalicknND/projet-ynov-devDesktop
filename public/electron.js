@@ -17,6 +17,32 @@ function createWindow() {
     },
   });
 
+  const { Menu } = require('electron');
+
+  const template = [
+    {
+      label: 'Fichier',
+      submenu: [
+        { label: 'Prévisions' },
+        { label: 'Favoris' },
+        { type: 'separator' },
+        {
+          label: 'Quitter',
+          click() {
+            app.quit();
+          },
+        },
+      ],
+    },
+    {
+      label: 'Aide',
+      submenu: [{ label: 'A propos' }, { label: 'Documentation' }],
+    },
+  ];
+
+  const menu = Menu.buildFromTemplate(template);
+  Menu.setApplicationMenu(menu);
+
   // In production, set the initial browser path to the local bundle generated
   // by the Create React App build process.
   // In development, set it to localhost to allow live/hot-reloading.
@@ -74,20 +100,3 @@ app.on('window-all-closed', function () {
     app.quit();
   }
 });
-
-// If your app has no need to navigate or only needs to navigate to known pages,
-// it is a good idea to limit navigation outright to that known scope,
-// disallowing any other kinds of navigation.
-const allowedNavigationDestinations = 'https://my-electron-app.com';
-app.on('web-contents-created', (event, contents) => {
-  contents.on('will-navigate', (event, navigationUrl) => {
-    const parsedUrl = new URL(navigationUrl);
-
-    if (!allowedNavigationDestinations.includes(parsedUrl.origin)) {
-      event.preventDefault();
-    }
-  });
-});
-
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.
