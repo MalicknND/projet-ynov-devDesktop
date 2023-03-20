@@ -1,7 +1,12 @@
 // Module to control the application lifecycle and the native browser window.
-const { app, BrowserWindow, protocol } = require('electron');
+const { app, BrowserWindow, dialog } = require('electron');
+const getLoc = require('electron-get-location');
+
 const path = require('path');
 const url = require('url');
+
+// Créer la fenêtre principale
+let mainWindow;
 
 // Create the native browser window.
 function createWindow() {
@@ -9,8 +14,7 @@ function createWindow() {
     width: 800,
     height: 600,
     icon: './public/assets/icons/favicon.ico',
-    // Set the path of an additional "preload" script that can be used to
-    // communicate between node-land and browser-land.
+
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true,
@@ -43,9 +47,6 @@ function createWindow() {
   const menu = Menu.buildFromTemplate(template);
   Menu.setApplicationMenu(menu);
 
-  // In production, set the initial browser path to the local bundle generated
-  // by the Create React App build process.
-  // In development, set it to localhost to allow live/hot-reloading.
   const appURL = app.isPackaged
     ? url.format({
         pathname: path.join(__dirname, 'index.html'),
@@ -61,42 +62,51 @@ function createWindow() {
   }
 }
 
-// Setup a local proxy to adjust the paths of requested files when loading
-// them from the local production bundle (e.g.: local fonts, etc...).
-function setupLocalFilesNormalizerProxy() {
-  protocol.registerHttpProtocol(
-    'file',
-    (request, callback) => {
-      const url = request.url.substr(8);
-      callback({ path: path.normalize(`${__dirname}/${url}`) });
-    },
-    (error) => {
-      if (error) console.error('Failed to register protocol');
-    }
-  );
-}
-
 // This method will be called when Electron has finished its initialization and
 // is ready to create the browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
   createWindow();
-  setupLocalFilesNormalizerProxy();
 
-  app.on('activate', function () {
-    // On macOS it's common to re-create a window in the app when the
-    // dock icon is clicked and there are no other windows open.
-    if (BrowserWindow.getAllWindows().length === 0) {
-      createWindow();
-    }
+  // Créer une boîte de dialogue pour demander la position de l'utilisateur
+  dialog
+    .showMessageBox(mainWindow, {
+      type: 'question',
+      buttons: ['Oui', 'Non'],
+      title: 'Obtenir votre position',
+      message: 'Pouvez-vous partager votre position ?',
+    })
+    .then((result) => {
+      // Si l'utilisateur accepte, utiliser le module navigator pour obtenir la position
+      if (result.response === 0) {
+        navigator.geolocation.getCurrentPosition((position) => {
+          console.log('Latitude :', position.coords.latitude);
+          console.log('Longitude :', position.coords.longitude);
+        });
+      }
+    });
+
+  getLoc.get((position) => {
+    console.log(position);
   });
+  getLoc.get({ enableHighAccuracy: true }, (position) => {
+    console.log(position);
+  });
+  if (getLoc.isSupported()) {
+    // géolocalisation prise en charge
+  } else {
+    // géolocalisation non prise en charge
+  }
 });
 
-// Quit when all windows are closed, except on macOS.
-// There, it's common for applications and their menu bar to stay active until
-// the user quits  explicitly with Cmd + Q.
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') {
     app.quit();
+  }
+});
+
+app.on('activate', function () {
+  if (BrowserWindow.getAllWindows().length === 0) {
+    createWindow();
   }
 });

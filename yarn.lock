@@ -4412,6 +4412,19 @@
     "simple-update-notifier" "^1.0.7"
     "yargs" "^17.5.1"
 
+"electron-get-location@^1.0.1":
+  "integrity" "sha512-gE8EzQ3uWPi7Y/v/MXyI0Yck1p3tmJkZ7TlLut/PJqlol9iGounyFe+Tixf90CDDRJuQltYANv4YR7M8jjobfQ=="
+  "resolved" "https://registry.npmjs.org/electron-get-location/-/electron-get-location-1.0.1.tgz"
+  "version" "1.0.1"
+  dependencies:
+    "electron-util" "^0.12.1"
+    "macos-version" "^4.0.1"
+
+"electron-is-dev@^1.1.0":
+  "integrity" "sha512-R1oD5gMBPS7PVU8gJwH6CtT0e6VSoD0+SzSnYpNm+dBkcijgA+K7VAMHDfnRq/lkKPZArpzplTW6jfiMYosdzw=="
+  "resolved" "https://registry.npmjs.org/electron-is-dev/-/electron-is-dev-1.2.0.tgz"
+  "version" "1.2.0"
+
 "electron-osx-sign@^0.6.0":
   "integrity" "sha512-+hiIEb2Xxk6eDKJ2FFlpofCnemCbjbT5jz+BKGpVBrRNT3kWTGs4DfNX6IzGwgi33hUcXF+kFs9JW+r6Wc1LRg=="
   "resolved" "https://registry.npmjs.org/electron-osx-sign/-/electron-osx-sign-0.6.0.tgz"
@@ -4441,6 +4454,14 @@
   "integrity" "sha512-M8WEXFuKXMYMVr45fo8mq0wUrrJHheiKZf6BArTKk9ZBYCKJEOU5H8cdWgDT+qCVZf7Na4lVUaZsA+h6uA9+PA=="
   "resolved" "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.4.284.tgz"
   "version" "1.4.284"
+
+"electron-util@^0.12.1":
+  "integrity" "sha512-6Vq8UzUFcwghVpXazIY4cD5TkTvqXOTvJpzsoeiQY051Twdwu6ofHHP/shEFkpxf8X81M6F8/cdeoT+2XYpTBg=="
+  "resolved" "https://registry.npmjs.org/electron-util/-/electron-util-0.12.3.tgz"
+  "version" "0.12.3"
+  dependencies:
+    "electron-is-dev" "^1.1.0"
+    "new-github-issue-url" "^0.2.1"
 
 "electron@^22.1.0":
   "integrity" "sha512-iDltL9j12bINK3aOp8ZoGq4NFBFjJhw1AYHelbWj93XUCAIT4fdA+PRsq0aaTHg3bthLLlLRvIZVgNsZPqWcqg=="
@@ -7067,6 +7088,13 @@
   "resolved" "https://registry.npmjs.org/lz-string/-/lz-string-1.4.4.tgz"
   "version" "1.4.4"
 
+"macos-version@^4.0.1":
+  "integrity" "sha512-iAHY4WrKka87ttT0Ep/yJ1JHbPSx8rj2+pSxklfEoTX+49Li6MlMpg5/cnvCrE+vqzcie5YIgtDDo8jNJfEYdQ=="
+  "resolved" "https://registry.npmjs.org/macos-version/-/macos-version-4.1.0.tgz"
+  "version" "4.1.0"
+  dependencies:
+    "semver" "^5.3.0"
+
 "magic-string@^0.25.0", "magic-string@^0.25.7":
   "integrity" "sha512-RmF0AsMzgt25qzqqLc1+MbHmhdx0ojF2Fvs4XnOqz2ZOBXzzkEwc/dJQZCYHAn7v1jbVOjAZfK8msRn4BxO4VQ=="
   "resolved" "https://registry.npmjs.org/magic-string/-/magic-string-0.25.9.tgz"
@@ -7304,6 +7332,11 @@
   "integrity" "sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw=="
   "resolved" "https://registry.npmjs.org/neo-async/-/neo-async-2.6.2.tgz"
   "version" "2.6.2"
+
+"new-github-issue-url@^0.2.1":
+  "integrity" "sha512-md4cGoxuT4T4d/HDOXbrUHkTKrp/vp+m3aOA7XXVYwNsUNMK49g3SQicTSeV5GIz/5QVGAeYRAOlyp9OvlgsYA=="
+  "resolved" "https://registry.npmjs.org/new-github-issue-url/-/new-github-issue-url-0.2.1.tgz"
+  "version" "0.2.1"
 
 "no-case@^3.0.4":
   "integrity" "sha512-fgAN3jGAh+RoxUGZHTSOLJIqUc2wmoBwGR4tbpNAKmmovFoWq0OdRkb0VkldReO2a2iBT/OEulG9XSUc10r3zg=="
@@ -9003,6 +9036,11 @@
   "integrity" "sha512-YM3/ITh2MJ5MtzaM429anh+x2jiLVjqILF4m4oyQB18W7Ggea7BfqdH/wGMK7dDiMghv/6WG7znWMwUDzJiXow=="
   "resolved" "https://registry.npmjs.org/semver-compare/-/semver-compare-1.0.0.tgz"
   "version" "1.0.0"
+
+"semver@^5.3.0":
+  "integrity" "sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ=="
+  "resolved" "https://registry.npmjs.org/semver/-/semver-5.7.1.tgz"
+  "version" "5.7.1"
 
 "semver@^6.0.0":
   "integrity" "sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw=="

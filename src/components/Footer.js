@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const Footer = () => {
   return (
     <Ftr>
-      Developed and Tested By <a href="https://github.com/MalicknND">Malick</a>
+      <a href="https://github.com/MalicknND">Malick</a>
     </Ftr>
   );
 };

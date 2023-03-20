@@ -8,6 +8,8 @@ function App() {
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState([]);
 
+  console.log(window.electron);
+
   const search = async (e) => {
     //that is calling via an await function the query that is passed
     if (e.key === 'Enter') {
@@ -21,7 +23,7 @@ function App() {
     <div className="main-container">
       <Search
         type="text"
-        placeholder="Enter your TimeZone Place"
+        placeholder="Enter City Name..."
         value={query}
         /** Direct State ge Query Send Madadhu*/ onChange={(e) =>
           setQuery(e.target.value)
