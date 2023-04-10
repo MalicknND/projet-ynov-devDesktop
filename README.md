@@ -19,3 +19,7 @@
 - avoir un système de retour utilisateur (alert, loader, etc.)
 - avoir un système de gestion d'erreur (try/catch, if/else, etc.)
 - utiliser une methode d’electron (dialog, notification, capture d’ecran etc.), plus il y en a mieux c’est
+
+# Lien de la video
+
+https://youtu.be/HlZuUMqfDUc
